@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>addEventListener</title>
+</head>
+
+<body>
+    <h1>Agregar eventos a un elemento HTML</h1>
+    <h3>Sintaxis: </h3>
+    <p>object.event = function;</p>
+    <p>Ejemplo: imgObject.onclick = swapImage;</p>
+    <img id="myImage" src="img/logo_cure.png" width="150px"/>
+    <script>
+        // Referencia a la imagen
+        const myImage = document.getElementById("myImage");
+
+        // Referencia al input
+        myImage.onmouseleave = swapImage;
+
+        function swapImage() {
+            myImage.src = "img/logo_utec.png";
+        }
+    </script>
+
+</body>
+
+</html>

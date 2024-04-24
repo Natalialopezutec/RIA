@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imágenes con efecto hover</title>
+<style>
+  .contenedor {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+  .titulo {
+    text-align: center;
+    font-size: 18pt;
+    margin-bottom: 10px;
+    padding: 10px 20px; 
+    border-radius: 10px;
+    background: linear-gradient(to right, #4e54c8, #8f94fb); 
+    color: white; 
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5); 
+    transition: box-shadow 0.3s ease; 
+  }
+
+  .titulo:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); /* Sombra aumentada al pasar el mouse */
+  }
+  
+  .imagen {
+    margin: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .imagen:hover {
+    transform: scale(1.1);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .imagen img {
+    width: 100px; 
+    height: auto;
+    display: block;
+  }
+</style>
+</head>
+<body>
+    <div class="titulo">Tecnologías TI</div> 
+<div class="contenedor">
+   
+  <div class="imagen">
+    <img src="Angular.png" alt="Imagen 1">
+  </div>
+  <div class="imagen">
+    <img src="CSS3.png" alt="Imagen 2">
+  </div>
+  <div class="imagen">
+    <img src="HTML5.png" alt="Imagen 3">
+  </div>
+  <div class="imagen">
+    <img src="JS.png" alt="Imagen 4">
+  </div>
+  <div class="imagen">
+    <img src="jquery.png" alt="Imagen 5">
+  </div>
+  <div class="imagen">
+    <img src="nodejs.png" alt="Imagen 6">
+  </div>
+  <div class="imagen">
+    <img src="TS.png" alt="Imagen 7">
+  </div>
+
+</div>
+
+</body>
+</html>

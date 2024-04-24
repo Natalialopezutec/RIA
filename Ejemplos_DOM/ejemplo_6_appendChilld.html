@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="nombre">
+    <button onclick="agregar()">Agregar</button>
+
+    <ul id="listaNombres">
+    </ul>
+   
+    <script>
+        var ulNombres = document.getElementById("listaNombres");
+        var inputNombre = document.getElementById('nombre');
+        inputNombre.addEventListener('keypress', (evt) => {
+            if(evt.key === 'Enter') {
+                agregar();
+            }
+        })
+
+        function agregar() {
+            var li = document.createElement("li");
+            var inputNombre = document.getElementById("nombre");
+            var inputText = inputNombre.value;
+            if(searchText(inputText)===false) {
+                li.innerHTML = inputText+' <button onclick="eliminar(\''+inputText+'\');">Eliminar</button>';
+                ulNombres.appendChild(li);
+                inputNombre.value = '';  
+            }
+            else {
+                alert('Ya hay un nombre '+inputText+ ' ingresado!');
+            }
+            inputNombre.focus();   
+        }
+
+        function eliminar(text) {
+            for(var i = 0; i < ulNombres.childNodes.length; i++) {
+                if(ulNombres.childNodes[i].nodeName.toLocaleLowerCase() ==='li') {
+                    if(ulNombres.childNodes[i].textContent.indexOf(text) !== -1) {
+                        ulNombres.removeChild(ulNombres.childNodes[i]);
+                    }
+                }
+            }
+        }
+
+        function searchText(text) {
+            let result = false;
+            ulNombres.childNodes.forEach((node) => {
+                if(node.nodeName.toLocaleLowerCase() === 'li') {
+                    if(node.textContent === text+' Eliminar') {
+                        result = true;
+                    }
+                }
+            })
+            return result;
+        }
+    </script>
+</body>
+</html>

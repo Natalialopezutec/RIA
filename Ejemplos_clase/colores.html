@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo ClassList</title>
+    <style>
+        .red {
+            color: red;
+        }
+
+        .blue {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <p class="red">Un parrafo simple, pero cambiante.</p>
+    <button id="btnToggle">Alternar</button>
+    <script>const p = document.querySelector('p');
+        document.getElementById('btnToggle').addEventListener('click',
+            () => { p.classList.toggle('red'); p.classList.toggle('blue'); })
+    </script>
+</body>
+
+</html>

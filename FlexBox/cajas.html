@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cajas con flexbox</title>
+    <style>
+        .contenedor {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+        }
+
+        .caja1,
+        .caja2 {
+            width: 150px;
+            height: 150px;
+            background-color: #ccc;
+            margin: 10px;
+            border: 2px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+
+        }
+
+        .caja2 {
+            flex-shrink: 2;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="text-align: center;margin-bottom: 20px;color: blueviolet;">
+        <h1>Resolución Cajas Flexbox</h1>
+        <h3>Natalia López</h3>
+    </div>
+    <div class="contenedor">
+        <div class="caja1"><span>1</span></div>
+        <div class="caja1"><span>2</span></div>
+        <div class="caja1"><span>3</span></div>
+        <div class="caja1"><span>4</span></div>
+        <div class="caja2"><span>5</span></div>
+        <div class="caja2"><span>6</span></div>
+        <div class="caja2"><span>7</span></div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Nombres</title>
+    <!-- Agregar el enlace al archivo CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5 mb-3">Lista de Nombres</h1>
+
+        <input type="text" class="form-control" id="nombre" placeholder="Ingrese un nombre">
+        <button class="btn btn-primary" onclick="agregar()">Agregar</button>
+
+        <ul class="list-group mt-3" id="listaNombres">
+        </ul>
+    </div>
+
+    <script>
+        var ulNombres = document.getElementById("listaNombres");
+        var inputNombre = document.getElementById('nombre');
+        inputNombre.addEventListener('keypress', (evt) => {
+            if(evt.key === 'Enter') {
+                agregar();
+            }
+        })
+
+        function agregar() {
+            var li = document.createElement("li");
+            var inputNombre = document.getElementById("nombre");
+            var inputText = inputNombre.value;
+            if(searchText(inputText) === false) {
+                li.innerHTML = inputText + ' <button class="btn btn-danger btn-sm ml-2" onclick="eliminar(\'' + inputText + '\');">Eliminar</button>';
+                //li.className = "list-group-item";
+                li.classList.add("list-group-item");
+                //li.classList.toggle("list-group-item");
+                ulNombres.appendChild(li);
+                inputNombre.value = '';  
+            }
+            else {
+                alert('¡El nombre "' + inputText + '" ya ha sido ingresado!');
+            }
+            inputNombre.focus();   
+        }
+
+        function eliminar(text) {
+            for(var i = 0; i < ulNombres.childNodes.length; i++) {
+                if(ulNombres.childNodes[i].nodeName.toLowerCase() === 'li') {
+                    if(ulNombres.childNodes[i].textContent.indexOf(text) !== -1) {
+                        ulNombres.removeChild(ulNombres.childNodes[i]);
+                    }
+                }
+            }
+        }
+
+        function searchText(text) {
+            let result = false;
+            ulNombres.childNodes.forEach((node) => {
+                if(node.nodeName.toLowerCase() === 'li') {
+                    if(node.textContent === text + ' Eliminar') {
+                        result = true;
+                    }
+                }
+            })
+            return result;
+        }
+    </script>
+</body>
+</html>

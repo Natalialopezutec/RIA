@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo 5 - innerText innerHTML textContent</title>
+</head>
+<body>
+    <h1>Ejemplo de textContent, innerHtml y innerText (ver salida por consola)</h1>
+    <p id="parrafo1">Texto del <u>parrafo 1</u></p>
+    <script>
+        let parrafo1 = document.getElementById('parrafo1');
+        console.log('Resultado usando textContent: '+parrafo1.textContent);
+        console.log('Resultado usando innerText: '+parrafo1.innerText);
+        console.log('Resultado usando innerHtml: '+parrafo1.innerHTML);
+        console.log('El nodo padre del elemento <p> es el nodo: '+parrafo1.parentNode.nodeName);
+        console.log('El primer nodo hijo del nodo <p> es: '+parrafo1.firstChild.nodeName);
+    </script>
+</body>
+</html>

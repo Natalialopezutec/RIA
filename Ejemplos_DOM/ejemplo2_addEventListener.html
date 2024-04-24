@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>addEventListener</title>
+</head>
+
+<body>
+    <h1>addEventListener</h1>
+    <h3>Introducido en HTML5, sintaxis: </h3>
+    <p>addEventListener(type,listener)</p>
+    <ul name="type">
+        <li>click</li>
+        <li>mouseover</li>
+        <li>mousedown</li>
+        <li>mouseup</li>
+        <li>mousemove</li>
+        <li>mouseout</li>
+        <li>referencia: <a href="https://w3c.github.io/uievents/#sync-async">uievents - w3c draft</a></li>
+    </ul>
+    <p>addEventListener permite más de una funcion asignada a un evento</p>
+
+    <button id="btnIncrementar" value="1">incrementar</button>
+    <br />
+    <input type="number" id="inputCounter" value="0" readonly />
+    <br />
+    <button id="btnDeshabilitar">Deshabilitar incremento</button>
+    <button id="btnHabilitar">Habilitar incremento</button>
+    <script>
+        // Referencia a botones:
+        const botonIncrementar = document.getElementById("btnIncrementar");
+        const btnDeshabilitar = document.getElementById('btnDeshabilitar');
+        const btnHabilitar = document.getElementById('btnHabilitar');
+
+        // Referencia al input
+        const inputCounter = document.getElementById("inputCounter");
+
+        // Valor inicial del contador:
+        inputCounter.value = 1;
+
+        // Funcion de incremento:
+        const incrementar = () => {
+            inputCounter.value++;
+        };
+
+        // Funcion mostrar evento por consola:
+        function consoleLog(evt) {
+            console.log(evt)
+        }
+
+        // listener de consoleLog en el evento click
+        botonIncrementar.addEventListener('click', consoleLog);
+
+        // Funcion agregar listener contador
+        const habilitar = function () {
+            botonIncrementar.addEventListener('click', incrementar);
+        }
+        // Funcion elminar listener contador
+        const deshabilitar = function () {
+            botonIncrementar.removeEventListener('click', incrementar);
+        }
+
+        // Agregar Listener a los botones habilitar y deshabilitar:
+        btnHabilitar.addEventListener('hover', habilitar);
+        btnDeshabilitar.addEventListener('click', deshabilitar);
+
+
+        /* Opcion con arrow function: */
+        /*
+        boton.addEventListener('click', () => {
+            inputCounter.value++;
+            
+        });
+        */
+        function consoleLog(evt) {
+            console.log(evt)
+        }
+
+ 
+    </script>
+
+</body>
+
+</html>

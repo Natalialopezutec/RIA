@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM - classList</title>
+    <style>
+        .seccionPrincipal {
+            font-size: 2.5em;
+        }
+
+        .show {
+            /*
+            la animacion no funcionaria con el display:none
+            display:none;
+            animation: 3s infinite alternate slidein;
+            */
+            /* Alternativa:*/
+            animation: grow 2s ease;
+        }
+
+        @keyframes grow {
+            0% {
+                display: none;
+                opacity: 0;
+            }
+
+            1% {
+                display: block;
+                opacity: 0;
+                transform: scale(0);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .noshow {
+            animation: shrink 2s ease-in-out;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes shrink {
+            0% {
+                display: block;
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0);
+
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="seccionPrincipal">
+        <h1>Ejemplo classList</h1>
+        <p class="show">El parrafo no debe ser seleccionado en este ejemplo (que usa querySelector) para el cambio de color, se usa para un efecto mediante el uso de toggle y animaciones css</p>
+    </section>
+    <hr>
+    <label for="inputColor">Selecciona un color para el titulo:</label></label><input type="color" id="inputColor" />
+    <br />
+    <button id="btnToggle">Ocultar/Mostrar</button>
+    <script>
+        const inputColor = document.getElementById("inputColor");
+        const seccionPrincipalClass = document.querySelector(".seccionPrincipal h1");
+        inputColor.addEventListener('change', () => {
+            console.log(inputColor.value);
+            if (seccionPrincipalClass) {
+                seccionPrincipalClass.style.color = inputColor.value;
+            }
+        })
+        const btnToggle = document.getElementById('btnToggle');
+        btnToggle.addEventListener('click', () => {
+            const parrafo = document.querySelector('.seccionPrincipal p');
+            parrafo.classList.toggle('show');
+            parrafo.classList.toggle('noshow');
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo animacion</title>
+    <style>
+        .paused {
+            animation-play-state: paused;
+        }
+
+        div {
+            /*animation: animation-name animation-duration animation-timing-function animation-delay animation-iteration-count animation-duration; */
+            animation: cambiar 10s linear 1s infinite alternate backwards;
+            height: 150px;
+            width: 150px;
+            position: absolute;
+        }
+
+        @keyframes cambiar {
+            from {
+                right: 0px;
+                background-color: blue;
+            }
+
+            to {
+                right: 750px;
+                background-color: red;
+                border-radius: 50%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="caja"></div>
+
+    <button id="playStop">Detener Animación</button>
+
+    <script>
+        const btn = document.getElementById("playStop");
+        const caja = document.getElementById("caja");
+
+        btn.addEventListener("click", function () {
+            caja.classList.toggle("paused");
+            comprobarEstado();
+        });
+
+        const comprobarEstado = function () {
+            if (caja.classList.contains("paused")) {
+                btn.textContent = "PAUSADO";
+                return true;
+            } else {
+                btn.textContent = "CORRIENDO";
+                return false;
+            }
+        };
+
+        window.onload = function () {
+            comprobarEstado();
+        };
+    </script>
+</body>
+
+</html>
